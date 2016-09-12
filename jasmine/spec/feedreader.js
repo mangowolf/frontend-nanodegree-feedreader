@@ -35,7 +35,7 @@ $(function() {
             for(var i=0; i<allFeeds.length; i++){
                 expect(allFeeds[i].url).toBeDefined();
                 expect(allFeeds[i].url).not.toBe("");
-            };
+            }
         });
 
         /* TODO: Write a test that loops through each feed
@@ -47,7 +47,7 @@ $(function() {
                 expect(feed.name).toBeDefined();
                 expect(feed.name).not.toBe("");
             });
-         })
+         });
     });
 
     /* TODO: Write a new test suite named "The menu" */
@@ -73,12 +73,14 @@ $(function() {
         });
 
         it('icon hides when clicked', function(){
-            $('.menu-icon-link').click()
+            $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
     });
+
     /* TODO: Write a new test suite named "Initial Entries" */
     describe('Initial Entries', function(){
+
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
          * a single .entry element within the .feed container.
@@ -119,5 +121,4 @@ $(function() {
             done();
         });
     });
-
 }());
