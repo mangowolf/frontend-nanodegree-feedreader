@@ -69,13 +69,16 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('icon toggles when clicked', function(){
-            expect($(".menu-icon-link").click().hasClass('menu-hidden')).toBe(false);
-        });
-
-        it('icon hides when clicked', function(){
+            $(".menu-icon-link").click();
+            expect($("body").hasClass('menu-hidden')).toBe(false);
             $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(true);
         });
+
+        /*it('icon hides when clicked', function(){
+            $('.menu-icon-link').click();
+            expect($('body').hasClass('menu-hidden')).toBe(true);
+        });*/
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
@@ -108,17 +111,15 @@ $(function() {
         beforeEach(function(done){
             loadFeed(0, function(){
                 feed0 = $(".feed").html();
+                loadFeed(1, function(){
+                    feed1 = $(".feed").html();
+                    done();
+                });
             });
-            loadFeed(1, function(){
-                feed1 = $(".feed").html();
-                done();
-            });
-
         });
 
-        it('content has changed', function(done){
+        it('content has changed', function(){
             expect(feed0).not.toBe(feed1);
-            done();
         });
     });
 }());
